@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Opening Obsidian</title>
+<style>body{font:16px system-ui,sans-serif;margin:3rem 1rem;text-align:center;color:#222;background:#fff}@media(prefers-color-scheme:dark){body{color:#ddd;background:#1e1e1e}a{color:#a88bfa}}</style>
+</head>
+<body>
+<p id="msg">Opening Obsidian…</p>
+<p><a id="go" href="#">Click here if nothing happens</a></p>
+<script>
+  // The obsidian:// link rides in the hash, so it never reaches the server.
+  var target = location.hash.slice(1);
+  if (/^obsidian:\/\//i.test(target)) {
+    document.getElementById("go").href = target;
+    location.replace(target);
+  } else {
+    document.getElementById("msg").textContent = "No Obsidian link found.";
+    document.getElementById("go").style.display = "none";
+  }
+</script>
+</body>
+</html>
