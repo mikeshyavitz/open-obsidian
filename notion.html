@@ -10,11 +10,15 @@
 <body>
 <p id="msg">Opening Notion…</p>
 <p><a id="go" href="#">Click here if nothing happens</a></p>
+<p><a id="web" href="#" style="display:none">Open in the browser instead</a></p>
 <script>
   // The notion:// link rides in the hash, so it never reaches the server.
   var target = location.hash.slice(1);
   if (/^notion:\/\//i.test(target)) {
     document.getElementById("go").href = target;
+    var web = document.getElementById("web");
+    web.href = target.replace(/^notion:\/\//i, "https://");
+    web.style.display = "";
     location.replace(target);
   } else {
     document.getElementById("msg").textContent = "No Notion link found.";
